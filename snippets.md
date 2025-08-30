@@ -18,7 +18,7 @@ To keep your balance, you must keep moving.
 -Albert Einstein 
 % theme: encouragement
 
-// The Old Pond
+# The Old Pond
 An old silent pond
 A frog jumps into the pond—
 Splash! Silence again.
@@ -26,13 +26,14 @@ Splash! Silence again.
 % style: centered
 % theme: contemplation nature
 
-// The Taste of Rain
+# The Taste of Rain
 The taste
 Of rain
 —Why kneel?
 -Jack Kerouac
 % theme: contemplation
 
+# Metamorphosis
 One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed into a horrible vermin.
 -Franz Kafka
 % theme: contemplation fiction

@@ -14,6 +14,7 @@ import jinja2
 class Snippet:
     text: list[str] = field(default_factory=list)
     attribution: str = ""
+    title: str = ""
     style: list[str] = field(default_factory=list)
     theme: list[str] = field(default_factory=list)
     enabled: bool = True
@@ -42,6 +43,8 @@ class Snippet:
                 continue
             elif line.startswith("-"):
                 snippet.attribution = line[1:]
+            elif line.startswith("#"):
+                snippet.title = line[1:].strip()
             else:
                 snippet.text.append(line)
 

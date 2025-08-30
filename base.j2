@@ -42,7 +42,6 @@
             the text and title/label stretching to fill the remaining vertical
             space -->
           <div id="container" class="flex flex--col">
-            {% set title = None %}
             {% if title %}
               <span class="title text--center">{{ title }}</span>
             {% endif %}
@@ -53,7 +52,7 @@
                 {{ 'text--center' if 'centered' in style }}
                 value value--xxxlarge stretch-y"
               data-value-fit="true"
-              data-value-fit-max-height="{{ 300 if title else 370 }}"
+              data-value-fit-max-height="{{ 340 if title and attribution else 370 }}"
             >
               {% for line in text %}
                 <p>{{ line }}</p>
