@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="https://usetrmnl.com/css/latest/plugins.css">
+    <script src="https://usetrmnl.com/js/latest/plugins.js"></script>
+    <!--
+    <style>
+      /* playwright doesn't seem to respect my fontconfig fallbacks */
+      .title {
+        font-family: "DejaVu Serif" !important;
+      }
+      .content {
+        font-family: "DejaVu Serif" !important;
+      }
+      .label {
+        font-family: "DejaVu Serif" !important;
+      }
+    </style>
+    -->
+  <style>
+    /* My element specific styles because I couldn't figure out how to do
+       everything with the trmnl css framework.
+    */
+    #container {
+      /* have the main element fill the whole screen so the title and label
+         elements can be put right at the top and bottom. */
+      height: 100%; 
+    }
+    #content {
+      align-self: center;  /* center align the element (but not text) */
+    }
+    #attribution {
+      align-content: end;  /* put label text at bottom of stretch container */
+    }
+  </style>
+  </head>
+  <body class="environment trmnl">
+    <div class="screen">
+      <div class="view view--full">
+        <div class="layout">
+          <!--
+            TODO:
+            * bump label and title size a bit?
+            * the font is rendered really poorly on the device, is it my
+              overrides or a symptom of the screenshot plugin?
+            * customize the bottom bar in some way
+          -->
+          <!-- flex col for title/content/label with content resizing to fit
+            content and title/label stretching to fill the remaining versicle
+            space -->
+          <div id="container" class="flex flex--col">
+            <span class="title stretch-y text--center">Motivational Quote</span>
+            <div id="content" class="value">
+              <p>Care about people's approval</p>
+              <p>and you will be their prisoner.</p>
+            </div>
+            <!-- flex row to put the attribution on the RHS without
+              underlining the whole width -->
+            <div class="stretch-y flex flex--row" >
+              <div class="stretch-x"></div>
+              <div id="attribution" class="label label--underline stretch-y text--right">Tao 9</div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="title_bar">
+          <img class="image" src="https://usetrmnl.com/images/plugins/trmnl--render.svg" />
+          <span class="title">Plugin Title!</span>
+          <span class="instance">Instance Title!</span>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="https://usetrmnl.com/css/latest/plugins.css">
+    <script src="https://usetrmnl.com/js/latest/plugins.js"></script>
+    <!--
+    <style>
+      /* playwright doesn't seem to respect my fontconfig fallbacks */
+      .title {
+        font-family: "DejaVu Serif" !important;
+      }
+      .content {
+        font-family: "DejaVu Serif" !important;
+      }
+      .label {
+        font-family: "DejaVu Serif" !important;
+      }
+    </style>
+    -->
+  <style>
+    /* Element specific styles because I couldn't figure out how to do
+       everything with the trmnl css framework.
+    */
+    #container {
+      /* have the main element fill the whole screen so the title and label
+         elements can be put right at the top and bottom. */
+      height: 100%;
+      width: 100%;
+    }
+    #content {
+      align-content: center;  /* center align the element (but not text) */
+      align-self: center;  /* center align the element (but not text) */
+    }
+    #content.nowrap {
+      /* To prevent text reflowing but also have the JS resize text to fit, we
+      need to set nowrap and for the content to be bigger than the parent
+      container if the content requires it. */
+      white-space: nowrap;
+      width: fit-content !important;
+    }
+    #attribution {
+      align-content: end;  /* put label text at bottom of stretch container */
+    }
+  </style>
+  </head>
+  <body class="environment trmnl">
+    <div class="screen">
+      <div class="view view--full">
+        <div class="layout">
+          <!--
+            TODO:
+            * bump label and title size a bit?
+            * font could be rendered better, a symptom of the screenshot
+              plugin?
+            * customize the bottom bar in some way (plugin=snippets,
+            instance=tags?, that way I free up the title)
+          -->
+          <!-- flex col for title/content/label with content resizing to fit
+            the text and title/label stretching to fill the remaining vertical
+            space -->
+          <div id="container" class="flex flex--col">
+            <!-- max-height 370 without title, 300 with title -->
+            <div id="content" class="nowrap value value--xxxlarge stretch-y" data-value-fit="true" data-value-fit-max-height="370">
+              <!--
+              <p>Empty your cup</p>
+              <p>If you close your mouth to food,</p>
+              <p>you can know a sweeter taste.</p>
+              <p>Think of nothing but the source of thought.</p>
+              <p>Feed the soul; let the body fast.</p>
+              -->
+              <p>You have to be grateful for the little things in life;</p>
+              <p>like getting thrown into a clean dumpster.</p>
+            </div>
+            <!-- flex row to put the attribution on the RHS without
+              underlining the whole width -->
+            <div class="stretch-x flex flex--row">
+              <div class="stretch-y"></div> <!-- spacer, not sure why it needs stretch-y and not -x -->
+              <div id="attribution" class="label label--underline text--right">Tao 9</div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="title_bar">
+          <img class="image" src="https://usetrmnl.com/images/plugins/trmnl--render.svg" />
+          <span class="title">Plugin Title!</span>
+          <span class="instance">Instance Title!</span>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

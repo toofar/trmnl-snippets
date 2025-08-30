@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="https://usetrmnl.com/css/latest/plugins.css">
+    <script src="https://usetrmnl.com/js/latest/plugins.js"></script>
+    <style>
+      /* playwright doesn't seem to respect my fontconfig fallbacks */
+      .title {
+        font-family: "DejaVu Serif" !important;
+      }
+      .content {
+        font-family: "DejaVu Serif" !important;
+      }
+      .label {
+        font-family: "DejaVu Serif" !important;
+      }
+    </style>
+  </head>
+  <body class="environment trmnl">
+    <div class="screen">
+      <div class="view view--full">
+        <div class="layout">
+          <div class="columns">
+            <div class="column">
+                <span class="title text--center">Motivational Quote</span>
+                <div style="align-self: center" class="value" data-value-fit="true" data-value-fit-max-height="4">
+                <!--
+                  TODO:
+                  * somehow put title at the top and label at the bottom,
+                    leaving space around the content
+                  * make the underline on the label not go across the whole
+                    screen
+                -->
+                  <p>Care about people's approval</p>
+                  <p>and you will be their prisoner.</p>
+                </div>
+                <span class="label label--underline text--right">Tao 9</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="title_bar">
+          <img class="image" src="https://usetrmnl.com/images/plugins/trmnl--render.svg" />
+          <span class="title">Plugin Title!</span>
+          <span class="instance">Instance Title!</span>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
