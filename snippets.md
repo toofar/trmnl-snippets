@@ -8,6 +8,8 @@ Example snippet disabled disabled.
 block comment
 -->
 
+# Quotes
+
 To err is human;
 to forgive, divine.
 -Alexander Pope 
@@ -17,6 +19,8 @@ Life is like riding a bicycle.
 To keep your balance, you must keep moving.
 -Albert Einstein 
 % theme: encouragement
+
+# Haikus
 
 # The Old Pond
 An old silent pond
@@ -32,6 +36,8 @@ Of rain
 —Why kneel?
 -Jack Kerouac
 % theme: contemplation
+
+# Prompts
 
 # Metamorphosis
 One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed into a horrible vermin.

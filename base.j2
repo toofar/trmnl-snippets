@@ -69,7 +69,7 @@
         
         <div class="title_bar">
           <img class="image" src="https://usetrmnl.com/images/plugins/trmnl--render.svg" />
-          <span class="title">Snippets</span>
+          <span class="title">Snippets {{ " | " if section}} {{section}}</span>
           <span class="instance">{{ theme | sort | join(' | ') }}</span>
         </div>
       </div>

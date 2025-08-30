@@ -15,13 +15,14 @@ class Snippet:
     text: list[str] = field(default_factory=list)
     attribution: str = ""
     title: str = ""
+    section: str = ""
     style: list[str] = field(default_factory=list)
     theme: list[str] = field(default_factory=list)
     enabled: bool = True
 
     @classmethod
-    def from_lines(cls, lines):
-        snippet = Snippet()
+    def from_lines(cls, lines, section):
+        snippet = Snippet(section=section)
         disabled = False
         attribution = None
         directives = {}
@@ -66,7 +67,8 @@ def parse_input_file(path):
     snippets = []
     current_paragraph = []
     in_block_comment = False
-    for line in lines:
+    section = ""
+    for idx, line in enumerate(lines):
         if line.strip() == "<!--":
             in_block_comment = True
             continue
@@ -75,11 +77,13 @@ def parse_input_file(path):
                 in_block_comment = False
             continue
         elif not line.strip():
-            snippets.append(Snippet.from_lines(current_paragraph))
+            snippets.append(Snippet.from_lines(current_paragraph, section))
             current_paragraph.clear()
+        elif line[0] == "#" and not lines[idx + 1].strip():
+            section = line[1:].strip()
         else:
             current_paragraph.append(line)
-    snippets.append(Snippet.from_lines(current_paragraph))
+    snippets.append(Snippet.from_lines(current_paragraph, section))
 
     return [s for s in snippets if s.text and s.enabled]
 
