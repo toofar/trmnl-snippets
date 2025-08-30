@@ -52,7 +52,7 @@
                 {{ 'text--center' if 'centered' in style }}
                 value value--xxxlarge stretch-y"
               data-value-fit="true"
-              data-value-fit-max-height="{{ 340 if title and attribution else 370 }}"
+              data-value-fit-max-height="{{ 340 if title and attribution else 370 if title or attribution else 390 }}"
             >
               {% for line in text %}
                 <p>{{ line }}</p>

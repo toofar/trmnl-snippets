@@ -37,6 +37,11 @@ Of rain
 -Jack Kerouac
 % theme: contemplation
 
+// leading whitespace is not preserved currently
+hello
+  over
+    t h e r e
+
 # Prompts
 
 # Metamorphosis
