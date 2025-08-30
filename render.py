@@ -81,8 +81,8 @@ def parse_input_file(path):
     return [s for s in snippets if s.text and s.enabled]
 
 
-def render_snippet(snippet):
-    with open("out.html", "w", encoding="utf-8") as out_file:
+def render_snippet(args, snippet):
+    with open(args.output, "w", encoding="utf-8") as out_file:
         out_file.write(
             template.render(
                 {
@@ -124,6 +124,12 @@ parser = argparse.ArgumentParser()
 parser.add_argument("file", help="Input file to draw text from")
 parser.add_argument("-i", "--index", help="Index of snippet to render")
 parser.add_argument(
+    "-o",
+    "--output",
+    help="Path to write rendered HTML to",
+    default="out.html",
+)
+parser.add_argument(
     "-m",
     "--method",
     choices=selection_methods.keys(),
@@ -147,4 +153,4 @@ if __name__ == '__main__':
         method = "index"
     snippet = selection_methods[method](args, snippets)
 
-    render_snippet(snippet)
+    render_snippet(args, snippet)
