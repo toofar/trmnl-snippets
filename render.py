@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+import sys
 import argparse
 import random
 from subprocess import run, PIPE
@@ -23,12 +24,8 @@ class Snippet:
     @classmethod
     def from_lines(cls, lines, section):
         snippet = Snippet(section=section)
-        disabled = False
-        attribution = None
-        directives = {}
-        text = []
         for line in lines:
-            if line.startswith("%"):
+            if line.startswith("%"):  # directive like % key[: value]
                 line = line[1:].strip()
                 if line == "disabled":
                     snippet.enabled = False
