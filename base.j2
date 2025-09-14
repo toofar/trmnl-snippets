@@ -3,6 +3,51 @@
   <head>
     <link rel="stylesheet" href="https://usetrmnl.com/css/latest/plugins.css">
     <script src="https://usetrmnl.com/js/latest/plugins.js"></script>
+    <script>
+      // Detect when the hard coded "max height" of the content element needs
+      // to be adjusted.
+      // We need to put a max height on the content element for trml's text
+      // resizing method to run, but there's already been two times where I
+      // had to adjust the size when I didn't change anything.
+
+      // released some update that changed
+      // Could probably do reporting on actual vs target max size some time
+      // trmnl has to text resizing methods, fitValue for text and
+      // fitTextToContainer for numbers (which doesn't take height into
+      // account).
+      // fitValue() looks at:
+      //    elementRect.width > containerRect.width || maxHeight && elementRect.height > maxHeight)
+      // fitTextToContainer() looks at:
+      //    element.scrollWidth > container.clientWidth && fontSize > 8
+      setTimeout(() => {
+        let container = document.querySelector("#container")
+        let content = document.querySelector("#content")
+        let configuredMaxHeight = content.attributes['data-value-fit-max-height'].value
+        let siblingHeight = 0
+        // Subtract the height of all children of the container (plus 10px
+        // from the row-gap) from the container's height. Allocate the rest to
+        // the content element. This could possible be made more generic by
+        // looking for the element with 'stretch-y' set to use as the variable
+        // height one.
+        Array.from(container.children).forEach((el) => {
+          if (el != content) {
+            siblingHeight += (el.getBoundingClientRect().height + 10)
+          }
+        })
+        let maxHeight = container.getBoundingClientRect().height - siblingHeight
+        if (configuredMaxHeight < maxHeight) {
+          document.querySelector('.title').textContent += ' ⚠'
+
+          console.warn(`Max height for content needs to be adjusted configured=${configuredMaxHeight} actual=${maxHeight}`)
+          content.attributes['data-value-fit-max-height'].value = maxHeight
+
+          // Re-run text fitting
+          fitValue()
+        }
+      },
+        250
+      )
+    </script>
     <style>
       /* Element specific styles because I couldn't figure out how to do
          everything with the trmnl css framework.
@@ -52,7 +97,7 @@
                 {{ 'text--center' if 'centered' in style }}
                 value value--xxxlarge stretch-y"
               data-value-fit="true"
-              data-value-fit-max-height="{{ 340 if title and attribution else 370 if title or attribution else 390 }}"
+              data-value-fit-max-height="{{ 345 if title and attribution else 382 if title or attribution else 401 }}"
             >
               {% for line in text %}
                 <p>{{ line }}</p>

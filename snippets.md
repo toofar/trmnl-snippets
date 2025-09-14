@@ -20,6 +20,10 @@ To keep your balance, you must keep moving.
 -Albert Einstein 
 % theme: encouragement
 
+// no attribution
+If it ain't broke, don't fix it.
+% theme: contemplation
+
 # Haikus
 
 # The Old Pond

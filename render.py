@@ -10,6 +10,8 @@ import jinja2
 
 # TODO:
 # * save a log and read from that to make the random mode avoid repetition?
+# * should I make all single line text centered? The Motivational Quotes
+#   plugin is centered and that looks fine.
 
 @dataclass(slots=True)
 class Snippet:
